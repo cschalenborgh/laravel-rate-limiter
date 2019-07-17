@@ -1,0 +1,46 @@
+{
+    "name": "cschalenborgh/laravel-rate-limiter",
+    "description": "Rate limiter for Laravel",
+    "type": "library",
+    "keywords": [
+        "laravel",
+        "rate-limit",
+        "rate-limiter",
+        "throttle"
+    ],
+    "authors": [
+        {
+            "name": "Chris Schalenborgh",
+            "email": "chris@schalenborgh.be",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Cschalenborgh\\RateLimiter\\": "src"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Cschalenborgh\\RateLimiter\\RateLimiterServiceProvider"
+            ],
+            "aliases": {
+                "RateLimiter": "Cschalenborgh\\RateLimiter\\RateLimiterFacade"
+            }
+        }
+    },
+    "license": "MIT",
+    "require-dev": {
+        "phpunit/phpunit": "^7.5"
+    },
+    "require": {
+        "php" : ">=7.1"
+    }
+}
