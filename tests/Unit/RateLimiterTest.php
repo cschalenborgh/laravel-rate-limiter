@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Illuminate\Cache\CacheManager;
 use Cschalenborgh\RateLimiter\RateLimiter;
 use Illuminate\Container\Container as Container;
+use Illuminate\Config\Repository as Repository;
 use Illuminate\Support\Facades\Facade as Facade;
 
 class RateLimiterTest extends TestCase

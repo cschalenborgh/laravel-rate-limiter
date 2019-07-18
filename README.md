@@ -1,7 +1,10 @@
 # Rate Limiter package for Laravel
 
+
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/cschalenborgh/laravel-rate-limiter.svg?style=flat-square)](https://packagist.org/packages/cschalenborgh/laravel-rate-limiter)
 [![Build Status](https://travis-ci.org/cschalenborgh/laravel-rate-limiter.svg?branch=master)](https://travis-ci.org/cschalenborgh/laravel-rate-limiter)
 [![StyleCI](https://github.styleci.io/repos/197462301/shield?branch=master)](https://github.styleci.io/repos/197462301)
+[![Total Downloads](https://img.shields.io/packagist/dt/cschalenborgh/laravel-rate-limiter.svg?style=flat-square)](https://packagist.org/packages/cschalenborgh/laravel-rate-limiter)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # Description
