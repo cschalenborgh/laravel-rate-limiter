@@ -2,7 +2,7 @@
 
 namespace Cschalenborgh\RateLimiter;
 
-use Cache;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * Class RateLimiter.
@@ -53,23 +53,22 @@ class RateLimiter
     public function check($id, $use = 1.0)
     {
         $rate = $this->max_requests / $this->period;
-
         $t_key = $this->keyTime($id);
         $a_key = $this->keyAllow($id);
 
         if (!Cache::has($t_key)) {
-            // first hit; setup storage; allow.
             Cache::put($t_key, time(), $this->period);
             Cache::put($a_key, ($this->max_requests - $use), $this->period);
+
             return true;
         }
 
         $c_time = time();
 
-        $time_passed = $c_time - Cache::pull($t_key);
+        $time_passed = $c_time - Cache::get($t_key);
         Cache::put($t_key, $c_time, $this->period);
 
-        $allowance = Cache::pull($a_key);
+        $allowance = Cache::get($a_key);
         $allowance += $time_passed * $rate;
 
         if ($allowance > $this->max_requests) {
@@ -77,12 +76,13 @@ class RateLimiter
         }
 
         if ($allowance < $use) {
-            // need to wait for more 'tokens' to be in the bucket.
             Cache::put($a_key, $allowance, $this->period);
+
             return false;
         }
 
         Cache::put($a_key, $allowance - $use, $this->period);
+
         return true;
     }
 
@@ -103,7 +103,7 @@ class RateLimiter
             return $this->max_requests;
         }
 
-        return (int) max(0, floor(Cache::pull($a_key)));
+        return (int) max(0, floor(Cache::get($a_key)));
     }
 
     /**
@@ -126,7 +126,7 @@ class RateLimiter
      */
     private function keyTime($id)
     {
-        return $this->name . ":" . $id . ":time";
+        return $this->name . ':' . $id . ':time';
     }
 
     /**
@@ -136,6 +136,6 @@ class RateLimiter
      */
     private function keyAllow($id)
     {
-        return $this->name . ":" . $id . ":allow";
+        return $this->name . ':' . $id . ':allow';
     }
 }

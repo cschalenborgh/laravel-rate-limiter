@@ -5,6 +5,7 @@
 # Description
 
 You can use this package to easily rate limiter specific logic in your Laravel application, from Guzzle requests, to more specific application logic.
+This package is based on https://github.com/touhonoob/RateLimit.
 
 ## Installation
 
