@@ -6,7 +6,6 @@ use PHPUnit\Framework\TestCase;
 use Illuminate\Cache\CacheManager;
 use Cschalenborgh\RateLimiter\RateLimiter;
 use Illuminate\Container\Container as Container;
-use Illuminate\Config\Repository as Repository;
 use Illuminate\Support\Facades\Facade as Facade;
 
 class RateLimiterTest extends TestCase
@@ -16,8 +15,8 @@ class RateLimiterTest extends TestCase
         parent::setUp();
 
         $app = new Container();
-        $app->singleton('app', '\Illuminate\Container\Container');
-        $app->singleton('config', '\Illuminate\Config\Repository');
+        $app->singleton('app', 'Illuminate\Container\Container');
+        $app->singleton('config', 'Illuminate\Config\Repository');
         $app['config']->set('cache.default', 'array');
         $app['config']->set('cache.stores.array', [
             'driver'   => 'array',
