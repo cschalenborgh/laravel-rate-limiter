@@ -40,6 +40,7 @@
     "require": {
         "php" : ">=7.1",
         "illuminate/container": "~5.8.0",
+        "illuminate/cache": "~5.8.0",
         "illuminate/config": "~5.8.0",
         "illuminate/support": "~5.8.0"
     },
