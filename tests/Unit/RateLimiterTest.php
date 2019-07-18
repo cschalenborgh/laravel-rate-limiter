@@ -16,8 +16,8 @@ class RateLimiterTest extends TestCase
         parent::setUp();
 
         $app = new Container();
-        $app->singleton('app', 'Illuminate\Container\Container');
-        $app->singleton('config', 'Illuminate\Config\Repository');
+        $app->singleton('app', '\Illuminate\Container\Container');
+        $app->singleton('config', '\Illuminate\Config\Repository');
         $app['config']->set('cache.default', 'array');
         $app['config']->set('cache.stores.array', [
             'driver'   => 'array',
