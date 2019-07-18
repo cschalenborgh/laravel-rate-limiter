@@ -1,5 +1,7 @@
 # Rate Limiter package for Laravel
 
+[![Build Status](https://travis-ci.org/cschalenborgh/laravel-rate-limiter.svg?branch=master)](https://travis-ci.org/cschalenborgh/laravel-rate-limiter)
+[![StyleCI](https://github.styleci.io/repos/197462301/shield?branch=master)](https://github.styleci.io/repos/197462301)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # Description
