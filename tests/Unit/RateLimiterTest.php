@@ -2,11 +2,11 @@
 
 namespace Cschalenborgh\RateLimiter\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Illuminate\Cache\CacheManager;
+use Cschalenborgh\RateLimiter\RateLimiter;
 use Illuminate\Container\Container as Container;
 use Illuminate\Support\Facades\Facade as Facade;
-use PHPUnit\Framework\TestCase;
-use Cschalenborgh\RateLimiter\RateLimiter;
 
 class RateLimiterTest extends TestCase
 {
@@ -19,7 +19,7 @@ class RateLimiterTest extends TestCase
         $app->singleton('config', 'Illuminate\Config\Repository');
         $app['config']->set('cache.default', 'array');
         $app['config']->set('cache.stores.array', [
-            'driver'   => 'array'
+            'driver'   => 'array',
         ]);
         $app->bind('cache', function ($app) {
             return new CacheManager($app);
@@ -62,7 +62,7 @@ class RateLimiterTest extends TestCase
         $rl = new RateLimiter($name, $max_requests, $period);
         $rl->check($name);
 
-        $this->assertEquals(($max_requests-1), $rl->getAllowance($name));
+        $this->assertEquals(($max_requests - 1), $rl->getAllowance($name));
         $rl->purge($name);
         $this->assertEquals($max_requests, $rl->getAllowance($name));
     }
@@ -73,13 +73,13 @@ class RateLimiterTest extends TestCase
         $id = 'foobar';
         $rl = new RateLimiter($name, 1, 2);
 
-        $reflectionClass  = new \ReflectionClass($rl);
+        $reflectionClass = new \ReflectionClass($rl);
         $reflectionMethod = $reflectionClass->getMethod('keyTime');
         $reflectionMethod->setAccessible(true);
 
         $result = $reflectionMethod->invokeArgs($rl, [$id]);
 
-        $this->assertEquals($name. ':' . $id . ':time', $result);
+        $this->assertEquals($name.':'.$id.':time', $result);
     }
 
     public function testGetKeyAllow()
@@ -88,12 +88,12 @@ class RateLimiterTest extends TestCase
         $id = 'foobar';
         $rl = new RateLimiter($name, 1, 2);
 
-        $reflectionClass  = new \ReflectionClass($rl);
+        $reflectionClass = new \ReflectionClass($rl);
         $reflectionMethod = $reflectionClass->getMethod('keyAllow');
         $reflectionMethod->setAccessible(true);
 
         $result = $reflectionMethod->invokeArgs($rl, [$id]);
 
-        $this->assertEquals($name. ':' . $id . ':allow', $result);
+        $this->assertEquals($name.':'.$id.':allow', $result);
     }
 }
