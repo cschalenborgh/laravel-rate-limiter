@@ -32,6 +32,8 @@ The service provider will automatically get registered. Or you may manually add 
 ## Usage
 
 ```php
+use Cschalenborgh\RateLimiter\RateLimiter;
+
 $rate_limiter = new RateLimit('action_name', 5, 60); // max 5 times in 60 seconds
 
 if ($rate_limiter->check($lock_identifier)) {
