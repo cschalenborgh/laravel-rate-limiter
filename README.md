@@ -18,7 +18,7 @@ This package is based on https://github.com/touhonoob/RateLimit.
 You can install the package via composer:
 
 ``` bash
-composer require cschalenborgh/laravel-rate-limieter
+composer require cschalenborgh/laravel-rate-limiter
 ```
 
 The service provider will automatically get registered. Or you may manually add the service provider in your config/app.php file:
